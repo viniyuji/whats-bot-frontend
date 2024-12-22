@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whats Bot - Automatize seu atendimento</title>
+  <link rel="icon" href="./assets/logo.jpeg" type="image/x-icon">
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 5px 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .navbar .logo {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #006a43e8;
+      text-decoration: none;
+    }
+    .navbar .logo img {
+      height: 45px;  /* Adjust size as needed */
+      width: auto;
+      margin-right: 0px;
+      vertical-align: middle;  /* Align image with text */
+    }
+    /* Button style */
+    .navbar button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .navbar button img {
+      height: 20px; /* Adjust image size */
+      width: 20px;  /* Ensure consistent proportions */
+      margin-right: 10px;  /* Space between image and text */
+    }
+    .navbar button:hover {
+      background: #128C7E;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    header button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 1.3rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    header button:hover {
+      background: #128C7E;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 20px;
+    }
+    .feature-card {
+      background: #fff;
+      color: #333;
+      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      text-align: center;
+      width: 300px;
+    }
+    .feature-card h3 {
+      color: #128C7E;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    .feature-card p {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .test-button {
+      text-align: center;
+      margin: 50px 20px;
+    }
+    .test-button button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      font-size: 1.3rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 50px 20px;
+    }
+    .cta button {
+      display: inline-flex;
+      align-items: center; /* Align image and text vertically */
+      justify-content: center;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      gap: 10px; /* Add space between image and text */
+    }
+    .cta button img {
+      height: 25px; /* Adjust image size */
+      width: 25px; /* Ensure consistent proportions */
+    }
+    .cta button:hover {
+      background: #128C7E;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #128C7E;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <img src="./assets/logo.png"/>
+      WhatsBot
+    </a>
+    <a href="login.html">
+      <button>
+        Login
+      </button>
+    </a>  
+  </nav>
+
+  <header>
+    <h1>Chatbot para WhatsApp</h1>
+    <h2>Agilize seu atendimento e aumente a sua eficiência. Venha potencializar suas vendas.</h2>
+    <h2>Conheça as funcionalidades do nosso chatbot</h2>
+    <a href="">
+      <button>
+        <b>Teste nosso Chatbot</b>
+      </button>
+    </a>
+  </header>
+
+  <section class="features">
+    <div class="feature-card">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
+        <h3>Resposta Instantânea</h3>
+        <p>Responda a perguntas em tempo real, melhorando a satisfação do cliente.</p>
+    </div>
+
+    <div class="feature-card">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
+        <h3>Disponibilidade 24/7</h3>
+        <p>Esteja sempre presente, mesmo fora do horário comercial.</p>
+    </div>
+
+    <div class="feature-card">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
+        <h3>Customização</h3>
+        <p>Adapte o atendimento para refletir o estilo do seu negócio e seu próprio catálogo.</p>
+      </div>
+
+    <div class="feature-card">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
+        <h3>Fácil Integração</h3>
+        <p>Conecte-se facilmente ao seu WhatsApp existente e comece a usar.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <p>Pronto para levar o seu atendimento para o próximo nível?</p>
+    <button>
+      <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"/>
+      Fale Conosco
+    </button>
+  </section>
+
+  <footer>
+    &copy; 2024 AI Restaurant Bot. All rights reserved.
+  </footer>
+</body>
+</html>

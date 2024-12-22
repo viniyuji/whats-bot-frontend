@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whats Bot</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+    }
+    .container {
+      width: 420px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      color: #333;
+    }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #128C7E;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: -5px;
+    }
+    .container form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .container form input, .container form button, .container form textarea {
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .container form input:focus, .container form textarea:focus {
+      outline: none;
+      border-color: #25D366;
+      box-shadow: 0 0 8px rgba(37, 211, 102, 0.5);
+    }
+    .container form textarea {
+      resize: none;
+      height: 100px;
+    }
+    .container form button {
+      background: #25D366;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .container form button:hover {
+      background: #128C7E;
+    }
+    #logout-button {
+      margin-top: 15px;
+      background: #FF3B30;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    #logout-button:hover {
+      background: #D32F2F;
+    }
+    .dashboard {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="text" id="user_phone_id" placeholder="ID" required />
+      <input type="password" id="password" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <div class="container dashboard" id="dashboard-container">
+    <h2>Restaurant Info</h2>
+    <form id="restaurant-form">
+      <input type="text" id="restaurant-name" placeholder="Restaurant Name" required />
+      <textarea id="restaurant-info" placeholder="Restaurant Info" required></textarea>
+      <button type="submit">Save</button>
+    </form>
+    <button id="logout-button">Logout</button>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const restaurantForm = document.getElementById('restaurant-form');
+    const logoutButton = document.getElementById('logout-button');
+
+    const loginContainer = document.getElementById('login-container');
+    const dashboardContainer = document.getElementById('dashboard-container');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const user_phone_id = document.getElementById('user_phone_id').value;
+      const password = document.getElementById('password').value;
+
+      const response = await fetch('http://127.0.0.1:8000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_phone_id, password }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert(result.Message);
+        loginContainer.style.display = 'none';
+        dashboardContainer.style.display = 'block';
+      } else {
+        alert(result.message);
+      }
+    });
+
+    restaurantForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('restaurant-name').value;
+      const info = document.getElementById('restaurant-info').value;
+
+      const response = await fetch('http://127.0.0.1:5000/restaurant', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // To send cookies for session handling
+        body: JSON.stringify({ name, info }),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+
+    logoutButton.addEventListener('click', async () => {
+      const response = await fetch('http://127.0.0.1:5000/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      const result = await response.json();
+      alert(result.message);
+      loginContainer.style.display = 'block';
+      dashboardContainer.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
